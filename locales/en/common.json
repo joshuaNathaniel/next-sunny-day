@@ -1,0 +1,9 @@
+{
+  "description": "Find out when the next sunny day is going to happen.",
+  "deviceIssue": "There may be a problem with your device.",
+  "error": "An error has occurred.",
+  "keywords": "sunny, weather",
+  "notSupported": "Device does not support geolocation",
+  "prompt": "Please allow the browser to access your location.",
+  "title": "Next Sunny Day"
+}

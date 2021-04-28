@@ -1,16 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
 html,
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+main {
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+#sunny-day-container {
+  height: 100px;
+  line-height: 100px;
+}
+
+#title {
+  color: #FFD700;
+  font-family: 'Dancing Script', cursive;
+  font-size: 5em;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.loader-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+/* CSS Loader found at https://codepen.io/gk3/pen/JxIHw */
+.loader {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: inOut 2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.two {
+  -webkit-transform: rotate(60deg);
+}
+
+.three {
+  -webkit-transform: rotate(30deg);
+}
+
+@-webkit-keyframes inOut {
+  0%, 100% {
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+  }
+  40%, 60% {
+    width: 10px;
+    height: 10px;
+    top: 40px;
+    left: 40px;
+    -webkit-transform: rotate(100deg);
+  }
+
+}
+
+span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: gold;
+  position: absolute;
+  opacity: .3;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  right: 0;
+}
+
+span:nth-child(1) {
+  bottom: 0;
+}
+
+span:nth-child(2) {
+  right: 0;
+  left: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+
+span:nth-child(3) {
+  left: 0;
+  right: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+
+span:nth-child(4) {
+  left: 25%;
+  right: auto;
+  top: 75%;
+  -webkit-transform: translateY(-75%) translateX(-25%);
+}
+
+span:nth-child(5) {
+  left: 75%;
+  right: auto;
+  top: 75%;
+  -webkit-transform: translateY(-75%) translateX(-75%);
+}
+
+span:nth-child(6) {
+  left: 75%;
+  right: auto;
+  top: 25%;
+  -webkit-transform: translateY(-25%) translateX(-75%);
+}
+
+span:nth-child(7) {
+  left: 25%;
+  right: auto;
+  top: 25%;
+  -webkit-transform: translateY(-25%) translateX(-25%);
 }

@@ -1,0 +1,17 @@
+# TODO
+  - [x] Initialize Next.js app
+    - [x] Set up TypeScript
+  - [x] Add dependencies
+    - [x] Add eslint
+    - [x] Add Husky for pre-commits 
+    - [x] Add Jest
+  - [x] Set up localization
+  - [x] Create `GET 'api/location/latitude/longitude'`
+      - [x] Create tests
+  - [x] Create component that uses `navigation.location`
+      - [x] Create RTL tests
+  - [ ] Create acceptance tests
+  - [ ] Add caching mechanism
+  - [ ] Production SSL certs
+  - [ ] Add environment configs
+  - [ ] Dockerize

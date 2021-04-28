@@ -1,0 +1,9 @@
+{
+  "description": "Averigüe cuándo será el próximo día soleado.",
+  "deviceIssue": "Puede haber un problema con su dispositivo.",
+  "error": "Se ha producido un error.",
+  "keywords": "soleado, tiempo",
+  "notSupported": "El dispositivo no admite la geolocalización.",
+  "prompt": "Permita que el navegador acceda a su ubicación.",
+  "title": "Próximo día soleado"
+}

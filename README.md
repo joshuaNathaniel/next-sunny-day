@@ -1,34 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-sunny-day 
+A Next.js v10 app with localization for `en` and `es` that tells you when the next sunny day will happen in your location.
+
+## Content
+- [Getting Started](#getting-started)
+  - [Running Locally](#running-locally)
+    - [Generate Self Signed Certificates](#generate-self-signed-certificates)
+    - [Run the server](#run-the-server)
+  - [Localization](#localization)
+- [Project Requirements](#project-requirements)  
+- [User Stories](#user-stories)
+- [Known Issues](#known-issues)
+- [Contributions](#contributions)
+- [To Dos](./TODO.md)  
+- [License](./LICENSE)
 
 ## Getting Started
-
-First, run the development server:
-
+### Installing
+Prefer `yarn` with Next.js because it offers features such as `resolutions`. If you do not currently have yarn installed then run the following:
 ```bash
-npm run dev
+brew install yarn
 # or
-yarn dev
+npm install --global yarn
+# but that is like downloading Chrome with Edge
+```
+then when installed simply run the following
+```bash
+yarn
+# or
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running Locally
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+#### Generate Self Signed Certificates
+From the app directory run the following command
+```bash
+mkdir certificates 
+```
+then `cd certificates` and run the following
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+openssl req -x509 -out localhost.crt -keyout localhost.key \
+  -days 365 \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj '/CN=localhost:3000' -extensions EXT -config <( \
+   printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+```
+Congrats! You now have a virus! I'm kidding. You now have the certs available to run locally but there may be additional steps needed.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+*macOS* requires making changes in Keychain Access so that your certs are always trusted.
 
-## Learn More
+#### Run the server
+First, run the development server:
+```bash
+yarn dev
+```
+Open [https://localhost:3000](https://localhost:3000) with your browser (Firefox preferably) to see the result.
 
-To learn more about Next.js, take a look at the following resources:
+### Localization
+To view the Spanish localization you need to visit [https://localhost:3000/es](https://localhost:3000/es)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Requirements
+> The UI implementation should **prompt for a location**, and **display
+the resulting weather**... and **display the information you feel is relevant**.(sic)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## User Stories
+```gherkin
+Given a user opens the web application
+  Then they will be prompted by the browser to allow the device to access their location
+  
+Given a user allows the device to access their location
+  Then they will see relevant weather information
 
-## Deploy on Vercel
+Given a user does not allow the device to access their location
+  Then they will be presented with a 'Request to allow access' message
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Given a user's device does not support geolocation
+  Then they will be presented with a 'Device not supported' message 
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Known Issues
+- self-signed certificates in Chrome may still not allow `navigation.location` to work properly resulting in the application not working.
+
+## Contributions
+¯\_(ツ)_/¯
