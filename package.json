@@ -4,11 +4,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
     "build": "next build",
+    "dev": "node server.js",
+    "docker:up": "docker-compose up -d --build",
+    "docker:down": "docker-compose down",
     "lint": "eslint --ext js,jsx,ts,tsx --fix",
     "postinstall": "husky install",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit"
