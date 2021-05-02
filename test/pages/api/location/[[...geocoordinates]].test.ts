@@ -58,10 +58,15 @@ describe('location/latitude/longitude', () => {
     afterAll(() => {
       server.close()
     })
-    it('should', async () => {
+
+    it('should return a return a date', async () => {
       const date = await clientSideHandler('0', '0', 'https://next-sunny-day')
 
       expect(date).toStrictEqual(weather.properties.periods[2].startTime)
+    })
+
+    it('should throw an error without a host', async () => {
+      await expect(() => clientSideHandler('0', '0')).rejects.toThrowError()
     })
   })
 })
